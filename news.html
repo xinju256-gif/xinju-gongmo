@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻中心 | 芯聚电子 × 共模半导体</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{700:'#1d4ed8',800:'#1e40af'}}}}}</script>
+  <style>
+    .nav-underline{position:relative}.nav-underline::after{content:'';position:absolute;bottom:-2px;left:50%;right:50%;height:2px;background:#1d4ed8;transition:all .3s;border-radius:1px}.nav-underline:hover::after,.nav-underline.active::after{left:0;right:0}
+    .news-content.active{display:block}.news-content{display:none}
+    .nav-link-white{position:relative;color:#64748b;font-size:14px;padding:8px 0;transition:color .2s}.nav-link-white::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#1d4ed8;transition:all .3s;border-radius:1px}.nav-link-white:hover{color:#1d4ed8}.nav-link-white:hover::after{left:0;right:0}.nav-link-white.active{color:#1d4ed8;font-weight:600}.nav-link-white.active::after{left:0;right:0}
+  </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+<!-- 导航栏 - 蓝色背景 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between py-3.5">
+    <a href="index.html" class="flex items-center gap-4 py-1 shrink-0">
+      <img src="images/logo-simacity-new.png" alt="SIMACITY 芯聚电子" class="h-12 w-auto object-contain" style="max-width:150px;">
+      <div class="w-px h-11 bg-white/30 mx-1"></div>
+      <img src="images/logo-gongmo.png" alt="共模半导体 GONGMO" class="h-12 w-auto object-contain">
+    </a>
+    <nav class="hidden lg:flex items-center gap-9">
+      <a href="index.html" class="nav-link-white">首页</a>
+      <a href="prodcenter.html" class="nav-link-white">产品中心</a>
+      <a href="applications.html" class="nav-link-white">应用领域</a>
+      <a href="news.html" class="nav-link-white active">新闻中心</a>
+      <a href="about.html" class="nav-link-white">关于我们</a>
+      <a href="contact.html" class="nav-link-white">联系我们</a>
+    </nav>
+    <a href="tel:021-62271972" class="hidden xl:flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      021-62271972
+    </a>
+    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1">
+    <a href="index.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">首页</a>
+    <a href="prodcenter.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">产品中心</a>
+    <a href="applications.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">应用领域</a>
+    <a href="news.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-blue-700 bg-blue-50">新闻中心</a>
+    <a href="about.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">关于我们</a>
+    <a href="contact.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">联系我们</a>
+    <a href="tel:021-62271972" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-blue-700 mt-2">电话：021-62271972</a>
+  </div>
+</header>
+<script>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+
+<div class="bg-gradient-to-r from-blue-800 to-blue-700 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl sm:text-4xl font-black text-white mb-2">新闻中心</h1>
+    <p class="text-blue-200">共模半导体新品发布 · 行业动态 · 展会活动</p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Tab -->
+  <div class="flex flex-wrap gap-2 mb-10">
+    <button onclick="switchNewsTab('all')" class="tab-btn active" data-ntab="all">全部</button>
+    <button onclick="switchNewsTab('new')" class="tab-btn inactive" data-ntab="new">新品发布</button>
+    <button onclick="switchNewsTab('event')" class="tab-btn inactive" data-ntab="event">展会活动</button>
+    <button onclick="switchNewsTab('industry')" class="tab-btn inactive" data-ntab="industry">行业动态</button>
+  </div>
+
+  <!-- 全部 -->
+  <div id="news-all" class="news-content active">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="news-grid-all"></div>
+  </div>
+  <div id="news-new" class="news-content">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="news-grid-new"></div>
+  </div>
+  <div id="news-event" class="news-content">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="news-grid-event"></div>
+  </div>
+  <div id="news-industry" class="news-content">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="news-grid-industry"></div>
+  </div>
+</div>
+
+<footer class="bg-gray-900 text-gray-400 py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="text-[16px] font-black" style="font-family:'Arial Black',sans-serif; color:#C41230;">SIMACITY</div>
+      <div class="w-px h-6 bg-gray-700"></div>
+      <span class="text-sm font-bold text-white">共模半导体授权代理商</span>
+    </div>
+    <p class="text-xs text-gray-500">© 2026 上海芯聚电子科技有限公司</p>
+  </div>
+</footer>
+
+<script>
+const allNews = [
+  {id:671, title:'GM6403A：3.4V-45V宽压3A全集成降压模块，PIN to PIN兼容替换MPM3630/3620/3610/3606', date:'2026-09-22', cat:'new', tag:'新品发布', preview:'fDN4bXueoniBuHWJPm98kA_0.jpeg', color:'green'},
+  {id:670, title:'圆满收官 | 共模半导体2026光博会回顾', date:'2026-09-11', cat:'event', tag:'展会回顾', preview:'MDX-TVB3X007jujJEMQPxA_0.jpeg', color:'purple'},
+  {id:669, title:'直击光博现场！共模半导体七款新品 + 全场景方案惊艳亮相，展位人气爆棚', date:'2026-09-09', cat:'event', tag:'展会现场', preview:'preview.jpg', color:'blue'},
+  {id:668, title:'展会预告｜共模半导体亮相 2026 深圳 CIOE 光博会8E32 - 8E33展位', date:'2026-08-26', cat:'event', tag:'展会预告', preview:'qetk8kZhhXY4PrYnwjvDPQ_0.jpeg', color:'blue'},
+  {id:667, title:'【新品发布】GM7210：20ppm/℃高精度基准源，REF31同级替代 宽压低功耗更优', date:'2026-08-19', cat:'new', tag:'新品发布', preview:null, color:'green'},
+  {id:666, title:'【新品发布】GM65041：2mm×2mm超小封装4A降压模块，1.6MHz高频赋能高密度POL供电', date:'2026-08-13', cat:'new', tag:'新品发布', preview:null, color:'green'},
+  {id:665, title:'低噪、毛刺、声场塌陷全消失！GM1501专为 DAC 打造供电利器', date:'2026-08-07', cat:'new', tag:'技术文章', preview:null, color:'green'},
+  {id:664, title:'【新品发布】GM7200：22μA超低功耗精密基准源，REF30性能升级替代', date:'2026-07-22', cat:'new', tag:'新品发布', preview:null, color:'green'},
+];
+
+const colorMap = {green:{bg:'bg-green-50 border-green-200', badge:'bg-green-100 text-green-700'},purple:{bg:'bg-purple-50 border-purple-200', badge:'bg-purple-100 text-purple-700'},blue:{bg:'bg-blue-50 border-blue-200', badge:'bg-blue-100 text-blue-700'},amber:{bg:'bg-amber-50 border-amber-200', badge:'bg-amber-100 text-amber-700'}};
+
+const imgMap = {
+  671:'images/app-img/buck-DUZf2VKV.jpg',
+  670:'images/app-img/20230721204751-Dj_zi4Ma.jpg',
+  669:'images/app-img/20230908145009-Br-BIgSt.jpg',
+  668:'images/app-img/20231213171014-COhTDeNe.jpg',
+  667:'images/app-img/rvs-Bw8Og4Fi.jpg',
+  666:'images/app-img/buck-DUZf2VKV.jpg',
+  665:'images/app-img/amplifier-BXe3dPcg.jpg',
+  664:'images/app-img/rvs-Bw8Og4Fi.jpg',
+};
+
+function makeCard(n) {
+  const c = colorMap[n.color] || colorMap.blue;
+  const img = imgMap[n.id] || 'images/app-img/buck-DUZf2VKV.jpg';
+  return `<a href="news-detail.html?id=${n.id}" class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
+    <div class="h-44 ${c.bg} flex items-center justify-center overflow-hidden">
+      <img src="${img}" alt="${n.title}" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'flex items-center justify-center w-full h-full\\'><svg class=\\'w-10 h-10 text-gray-300\\' fill=\\'none\\' stroke=\\'currentColor\\' viewBox=\\'0 0 24 24\\'><path stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\' stroke-width=\\'1.5\\' d=\\'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 12h10\\'/></svg></div>';">
+    </div>
+    <div class="p-5 flex flex-col flex-1">
+      <span class="inline-block self-start ${c.badge} text-xs font-semibold px-2.5 py-0.5 rounded-full mb-3">${n.tag}</span>
+      <h3 class="font-bold text-gray-900 leading-snug mb-3 flex-1 line-clamp-3">${n.title}</h3>
+      <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+        <span class="text-xs text-gray-400">${n.date}</span>
+        <span class="text-sm font-semibold text-blue-600">阅读全文 →</span>
+      </div>
+    </div>
+  </a>`;
+}
+
+['all','new','event','industry'].forEach(cat => {
+  const grid = document.getElementById('news-grid-' + cat);
+  const items = cat === 'all' ? allNews : allNews.filter(n => n.cat === cat);
+  grid.innerHTML = items.length ? items.map(makeCard).join('') : '<p class="text-gray-400 col-span-3 text-center py-12">暂无该分类内容</p>';
+});
+
+function switchNewsTab(tab) {
+  document.querySelectorAll('.news-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('[data-ntab]').forEach(el => { el.classList.remove('active'); el.classList.add('inactive'); });
+  document.getElementById('news-' + tab).classList.add('active');
+  document.querySelector(`[data-ntab="${tab}"]`).classList.remove('inactive');
+  document.querySelector(`[data-ntab="${tab}"]`).classList.add('active');
+}
+</script>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">产品中心</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="prodcenter.html?cat=1" class="hover:text-white transition-colors">高PSRR低噪声LDO</a></li>
+          <li><a href="prodcenter.html?cat=2" class="hover:text-white transition-colors">高效率小体积Buck</a></li>
+          <li><a href="prodcenter.html?cat=3" class="hover:text-white transition-colors">基准源</a></li>
+          <li><a href="prodcenter.html?cat=4" class="hover:text-white transition-colors">放大器</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">快捷链接</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">首页</a></li>
+          <li><a href="applications.html" class="hover:text-white transition-colors">应用领域</a></li>
+          <li><a href="news.html" class="hover:text-white transition-colors">新闻中心</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">联系我们</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="tel:021-62271972" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              021-62271972
+            </a>
+          </li>
+          <li>
+            <a href="mailto:sales@simacity.com.cn" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              sales@simacity.com.cn
+            </a>
+          </li>
+          <li class="flex items-start gap-1.5 text-xs">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            上海市长宁区延安西路2299号
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">关注我们</h4>
+        <div class="text-sm">
+          <p class="mb-3 text-gray-400">扫码添加企业微信</p>
+          <img src="images/wechat-qr-new.jpg" alt="企业微信" class="w-32 h-32 rounded-xl border border-gray-700" onerror="this.src='images/wechat-qr.jpg'">
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-sm">© 2026 上海芯聚电子科技有限公司 版权所有</p>
+      <p class="text-xs text-gray-600">技术支持：共模半导体（苏州）有限公司</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新闻详情 | 芯聚电子 × 共模半导体</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{700:'#1d4ed8',800:'#1e40af'}}}}}</script>
+  <style>
+    .nav-underline{position:relative}.nav-underline::after{content:'';position:absolute;bottom:-2px;left:50%;right:50%;height:2px;background:#1d4ed8;transition:all .3s;border-radius:1px}.nav-underline:hover::after,.nav-underline.active::after{left:16px;right:16px}
+    .article-body h2{font-size:1.25rem;font-weight:800;color:#111827;margin-top:2rem;margin-bottom:.75rem}
+    .article-body h3{font-size:1.1rem;font-weight:700;color:#1f2937;margin-top:1.5rem;margin-bottom:.5rem}
+    .article-body p{color:#4b5563;line-height:1.8;margin-bottom:1rem}
+    .article-body ul{list-style:disc;padding-left:1.5rem;color:#4b5563;margin-bottom:1rem}
+    .article-body li{margin-bottom:.5rem}
+    .article-body strong{color:#1f2937;font-weight:600}
+    .article-body .highlight-box{background:#eff6ff;border-left:4px solid #2563eb;padding:1rem 1.25rem;border-radius:.5rem;margin:1.5rem 0}
+    .article-body table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.875rem}
+    .article-body table th{background:#f9fafb;padding:.75rem;text-align:left;font-weight:600;color:#374151;border-bottom:2px solid #e5e7eb}
+    .article-body table td{padding:.75rem;border-bottom:1px solid #f3f4f6}
+  
+    .nav-link-white{position:relative;color:#64748b;font-size:14px;padding:8px 0;transition:color .2s}.nav-link-white::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#1d4ed8;transition:all .3s;border-radius:1px}.nav-link-white:hover{color:#1d4ed8}.nav-link-white:hover::after{left:0;right:0}.nav-link-white.active{color:#1d4ed8;font-weight:600}.nav-link-white.active::after{left:0;right:0}
+  </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+<!-- 导航栏 - 白色背景，宽松留白 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12 flex items-center justify-between py-3">
+    <a href="index.html" class="flex items-center gap-3 py-1 shrink-0">
+      <img src="images/logo-simacity-new.png" alt="SIMACITY 芯聚电子" class="h-10 w-auto object-contain" style="max-width:140px;">
+      <div class="w-px h-10 bg-gray-300"></div>
+      <img src="images/logo-gongmo.png" alt="共模半导体 GONGMO" class="h-10 w-auto object-contain">
+    </a>
+    <nav class="hidden lg:flex items-center gap-9">
+      <a href="index.html" class="nav-link-white">首页</a>
+      <a href="prodcenter.html" class="nav-link-white">产品中心</a>
+      <a href="applications.html" class="nav-link-white">应用领域</a>
+      <a href="news.html" class="nav-link-white">新闻中心</a>
+      <a href="about.html" class="nav-link-white">关于我们</a>
+      <a href="contact.html" class="nav-link-white">联系我们</a>
+    </nav>
+    <a href="tel:021-62271972" class="hidden xl:flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      021-62271972
+    </a>
+    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1">
+    <a href="index.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">首页</a>
+    <a href="prodcenter.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">产品中心</a>
+    <a href="applications.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">应用领域</a>
+    <a href="news.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">新闻中心</a>
+    <a href="about.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">关于我们</a>
+    <a href="contact.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">联系我们</a>
+    <a href="tel:021-62271972" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-blue-700 mt-2">电话：021-62271972</a>
+  </div>
+</header>
+<script>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>.addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div id="article" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10">
+    <!-- 由 JS 填充 -->
+  </div>
+  <div class="mt-8 text-center">
+    <a href="news.html" class="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800 transition">
+      ← 返回新闻中心
+    </a>
+  </div>
+</div>
+
+<footer class="bg-gray-900 text-gray-400 py-10 mt-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <div class="text-[16px] font-black" style="font-family:'Arial Black',sans-serif; color:#C41230;">SIMACITY</div>
+      <div class="w-px h-6 bg-gray-700"></div>
+      <span class="text-sm font-bold text-white">共模半导体授权代理商</span>
+    </div>
+    <p class="text-xs text-gray-500">© 2026 上海芯聚电子科技有限公司</p>
+  </div>
+</footer>
+
+<script>
+const articles = {
+  671: {
+    title:'GM6403A：3.4V–45V宽压3A全集成降压模块，PIN to PIN兼容替换MPM3630/3620/3610/3606',
+    date:'2026-09-22', tag:'新品发布', tagColor:'bg-green-100 text-green-700',
+    content:`
+<h2>产品简介</h2>
+<p><strong>GM6403A</strong> 是共模半导体推出的 3A 全集成同步降压（Buck）转换器，支持 3.4V–45V 宽电压输入范围，输出电流高达 3A，峰值效率达 95%。芯片采用 LQFN-20（4×4mm）封装，内置上下管 MOS，典型应用仅需 3 个外围元件。</p>
+<div class="highlight-box">
+<strong>核心优势：</strong>宽压输入（3.4V–45V）| 3A 连续输出 | 效率 95% | LQFN-20 封装 | PIN to PIN 兼容 MPS MPM3630/MPM3620/MPM3610/MPM3606
+</div>
+
+<h2>典型应用场景</h2>
+<ul>
+  <li>汽车电子：BCM 车身控制模块、ADAS 传感器供电（12V/24V 供电域）</li>
+  <li>工业仪表：PLC 模拟量输出隔离电源、传感器供电</li>
+  <li>通信设备：光模块 POMA（光次模块）偏置供电</li>
+  <li>消费电子：电动工具电池管理（36V 锂电供电）</li>
+</ul>
+
+<h2>关键参数</h2>
+<table>
+  <tr><th>参数</th><th>值</th></tr>
+  <tr><td>输入电压</td><td>3.4V – 45V</td></tr>
+  <tr><td>输出电流</td><td>3A（连续）/ 4A（峰值）</td></tr>
+  <tr><td>输出电压</td><td>1V – 38V（可调）</td></tr>
+  <tr><td>开关频率</td><td>400kHz / 1MHz（可编程）</td></tr>
+  <tr><td>峰值效率</td><td>95%</td></tr>
+  <tr><td>封装</td><td>LQFN-20（4×4mm）</td></tr>
+  <tr><td>认证</td><td>AEC-Q100（进行中）</td></tr>
+</table>
+
+<h2>Pin to Pin 兼容</h2>
+<p>GM6403A 与 MPS（Monolithic Power Systems）MPM3630、MPM3620、MPM3610、MPM3606 系列完全兼容，无需修改 PCB 即可直接替换。在当前国产化替代的大背景下，GM6403A 为整机厂商提供了可靠的国产降压方案选择。</p>
+
+<h2>联系获取样品</h2>
+<p>GM6403A 现已量产，上海芯聚电子提供免费样品申请和技术支持服务。欢迎致电 <a href="tel:021-62271972" class="text-blue-600 underline">021-62271972</a> 或发送邮件至 <a href="mailto:sales@simacity.com.cn" class="text-blue-600 underline">sales@simacity.com.cn</a> 申请样品。</p>
+`
+  },
+  670: {
+    title:'圆满收官 | 共模半导体2026光博会回顾',
+    date:'2026-09-11', tag:'展会回顾', tagColor:'bg-purple-100 text-purple-700',
+    content:`
+<h2>展会概况</h2>
+<p>2026年9月9日至11日，第24届中国国际光电博览会（CIOE）在深圳国际会展中心成功举办。共模半导体携全系列高性能模拟芯片及六大应用场景方案亮相 8E32-8E33 展位，三天累计接待专业观众超过 3,000 人次，收获满满。</p>
+
+<h2>展位亮点回顾</h2>
+<h3>🔥 七款新品全球首发</h3>
+<p>本次光博会上，共模半导体发布了 7 款重磅新品，涵盖：</p>
+<ul>
+  <li><strong>GM6403A</strong>：45V/3A 宽压 Buck 模块（展会首发）</li>
+  <li><strong>GM65041</strong>：2mm×2mm 超小封装 4A 降压模块</li>
+  <li><strong>GM7210</strong>：20ppm/℃ 高精度基准源</li>
+  <li>另有 4 款 LDO 和放大器新品</li>
+</ul>
+
+<h3>🌡️ 红外热成像专区</h3>
+<p>针对红外热成像行业，共模半导体展示了完整电源链方案：GM1200（低噪声 LDO）+ GM7402（精密基准源）+ GM4500（低噪声放大器），吸引了包括国内头部红外整机厂商在内的众多专业观众驻足交流。</p>
+
+<h3>📡 光通信专区</h3>
+<p>共模半导体光通信专区展示了针对 100G/400G 光模块的完整供电方案。GM2500（6A/9MHz Buck）+ GM1200（后级 LDO 滤波）组合，为 TIA、激光驱动器和 CDR 芯片提供洁净、稳定、低噪声的供电轨。</p>
+
+<h2>客户反馈</h2>
+<p>展会期间，共模半导体团队与来自红外热成像、光通信、汽车电子、医疗设备等行业的数百名专业观众进行了深入交流。多位客户对 GM6403A 和 GM4500 系列产品表示了浓厚的兴趣，并现场填写了样品申请表单。</p>
+<div class="highlight-box">
+感谢所有莅临共模半导体展位的新老朋友！如果您未能亲临现场，可通过以下方式联系我们获取产品资料和样品：<br>
+电话：<a href="tel:021-62271972" class="text-blue-600 underline">021-62271972</a> | 邮件：<a href="mailto:sales@simacity.com.cn" class="text-blue-600 underline">sales@simacity.com.cn</a>
+</div>
+`
+  },
+  669: {
+    title:'直击光博现场！共模半导体七款新品 + 全场景方案惊艳亮相，展位人气爆棚',
+    date:'2026-09-09', tag:'展会现场', tagColor:'bg-blue-100 text-blue-700',
+    content:`
+<h2>深圳光博会 · 现场直击</h2>
+<p>2026年9月9日，深圳国际会展中心，第24届 CIOE 光博会正式开幕。共模半导体携七款年度重磅新品及六大行业解决方案，在 <strong>8E32-8E33</strong> 展位重磅亮相。</p>
+
+<h2>新品速览</h2>
+<div class="highlight-box">
+<strong>年度新品清单（2026光博首发）：</strong><br>
+• GM6403A — 45V/3A 宽压同步降压模块（LQFN-20）<br>
+• GM65041 — 2×2mm 超小封装 4A 降压（1.6MHz 高频）<br>
+• GM7210 — 20ppm/℃ 高精度基准源（宽压低功耗）<br>
+• GM7200 — 22μA 超低功耗精密基准源<br>
+• GM7402 — 1.3ppm/℃ 超高精度基准源（SOP-8）<br>
+• GM4500 — 28MHz 低噪声运算放大器<br>
+• GM4501 — 双通道低噪声运算放大器
+</div>
+
+<h2>六大应用场景</h2>
+<p>共模半导体在展位上搭建了六大应用场景展示区，让观众直观了解共模芯片在实际系统中的表现：</p>
+<ul>
+  <li><strong>红外热成像</strong>：GM1200 + GM7402 + GM4500 完整信号链</li>
+  <li><strong>光通信 POMA</strong>：GM2500 + GM1200 电源方案</li>
+  <li><strong>汽车电子</strong>：GM2406 + GM6403A 车载电源系统</li>
+  <li><strong>医疗设备</strong>：高精度参考 + 低噪声放大方案</li>
+  <li><strong>卫星通信</strong>：宽压抗辐照方案</li>
+  <li><strong>仪器仪表</strong>：ppm 级精密测量链</li>
+</ul>
+
+<h2>现场花絮</h2>
+<p>展会首日，共模半导体展位即迎来多波专业观众高峰。尤其是红外热成像专区，吸引了多家国内 TOP3 红外整机厂商的工程师团队专程来访，与共模 FAE 团队进行了深入的技术交流。许多观众在现场完成样品申请登记，表示期待尽快收到样品进行评测。</p>
+`
+  },
+  668: {
+    title:'展会预告｜共模半导体亮相 2026 深圳 CIOE 光博会 8E32-8E33 展位',
+    date:'2026-08-26', tag:'展会预告', tagColor:'bg-blue-100 text-blue-700',
+    content:`
+<h2>邀您莅临</h2>
+<p>2026年9月9日至11日，共模半导体将重磅亮相第24届中国国际光电博览会（CIOE），展位号：<strong>8E32-8E33</strong>。我们诚邀您莅临展位，与共模技术团队面对面交流。</p>
+
+<h2>展会信息</h2>
+<table>
+  <tr><th>项目</th><th>详情</th></tr>
+  <tr><td>展会名称</td><td>第24届中国国际光电博览会（CIOE 2026）</td></tr>
+  <tr><td>日期</td><td>2026年9月9日 – 11日</td></tr>
+  <tr><td>地点</td><td>深圳国际会展中心（宝安新馆）</td></tr>
+  <tr><td>共模展位</td><td>8E32 – 8E33（半导体/芯片专区）</td></tr>
+</table>
+
+<h2>本次看点</h2>
+<h3>七款年度重磅新品首发</h3>
+<p>本次光博会上，共模半导体将全球首发 7 款新产品，覆盖 Buck 降压模块、高精度基准源、低噪声运算放大器等品类。</p>
+
+<h3>六大行业方案全覆盖</h3>
+<p>共模半导体将展示针对红外热成像、光通信、汽车电子、医疗设备、卫星通信、仪器仪表六大行业的完整解决方案。</p>
+
+<h3>现场样品申请</h3>
+<p>展会期间，共模半导体将为专业观众提供现场样品申请服务。关注"共模半导体"微信公众号，回复"光博"，可提前预约样品申请。</p>
+
+<h2>联系我们</h2>
+<p>如需预约展会交流或了解更多产品信息，请联系上海芯聚电子：<br>
+电话：<a href="tel:021-62271972" class="text-blue-600 underline">021-62271972</a><br>
+邮件：<a href="mailto:sales@simacity.com.cn" class="text-blue-600 underline">sales@simacity.com.cn</a></p>
+`
+  },
+  667: {
+    title:'【新品发布】GM7210：20ppm/℃高精度基准源，REF31同级替代 宽压低功耗更优',
+    date:'2026-08-19', tag:'新品发布', tagColor:'bg-green-100 text-green-700',
+    content:`
+<h2>产品简介</h2>
+<p><strong>GM7210</strong> 是共模半导体推出的高精度、低功耗电压基准芯片，温漂系数仅为 <strong>20ppm/℃</strong>（典型值），与 TI REF31 系列完全兼容，并在此基础上实现了更宽的输入电压范围和更低的静态功耗。</p>
+<div class="highlight-box">
+<strong>核心优势：</strong>20ppm/℃ 温漂 | 宽电压输入 | 低至 22μA 静态电流 | PIN to PIN 兼容 REF31 | SOP-8 / MSOP-8 封装
+</div>
+
+<h2>关键参数</h2>
+<table>
+  <tr><th>参数</th><th>GM7210</th><th>REF31（对比）</th></tr>
+  <tr><td>温漂</td><td>20ppm/℃（典型）</td><td>15–30ppm/℃</td></tr>
+  <tr><td>静态电流</td><td>22μA</td><td>35μA</td></tr>
+  <tr><td>输入电压</td><td>3.5V – 40V</td><td>2.7V – 18V</td></tr>
+  <tr><td>输出电压</td><td>2.048 / 2.5 / 3.0 / 4.096 / 5.0V</td><td>固定档位</td></tr>
+  <tr><td>噪声</td><td>10μVp-p (0.1–10Hz)</td><td>15μVp-p</td></tr>
+  <tr><td>封装</td><td>SOP-8, MSOP-8</td><td>SOP-8, MSOP-8</td></tr>
+</table>
+
+<h2>应用场景</h2>
+<ul>
+  <li>ADC / DAC 参考电压源</li>
+  <li>工业过程控制系统</li>
+  <li>精密仪器仪表</li>
+  <li>医疗设备模拟前端</li>
+</ul>
+
+<h2>联系获取样品</h2>
+<p>GM7210 现已量产，上海芯聚电子提供免费样品申请。电话：<a href="tel:021-62271972" class="text-blue-600 underline">021-62271972</a>，邮件：<a href="mailto:sales@simacity.com.cn" class="text-blue-600 underline">sales@simacity.com.cn</a></p>
+`
+  },
+  666: {
+    title:'【新品发布】GM65041：2mm×2mm超小封装4A降压模块，1.6MHz高频赋能高密度POL供电',
+    date:'2026-08-13', tag:'新品发布', tagColor:'bg-green-100 text-green-700',
+    content:`
+<h2>产品简介</h2>
+<p><strong>GM65041</strong> 是共模半导体推出的 4A 同步降压（Buck）电源模块，采用突破性的 <strong>2mm×2mm LQFN-12</strong> 超小封装，开关频率高达 <strong>1.6MHz</strong>，支持 3.4V–45V 宽电压输入，是高密度 POL（负载点）供电的理想选择。</p>
+<div class="highlight-box">
+<strong>核心优势：</strong>2×2mm 超小封装 | 4A 输出电流 | 1.6MHz 高频 | 3.4V–45V 宽压 | 内置全部MOS | 仅需3个外围元件
+</div>
+
+<h2>关键参数</h2>
+<table>
+  <tr><th>参数</th><th>值</th></tr>
+  <tr><td>输入电压</td><td>3.4V – 45V</td></tr>
+  <tr><td>输出电流</td><td>4A（连续）</td></tr>
+  <tr><td>输出电压</td><td>1V – 36V（可调）</td></tr>
+  <tr><td>开关频率</td><td>1.6MHz（固定）</td></tr>
+  <tr><td>峰值效率</td><td>92%</td></tr>
+  <tr><td>封装</td><td>LQFN-12（2×2mm）</td></tr>
+  <tr><td>静态电流</td><td>25μA（关断）</td></tr>
+</table>
+
+<h2>典型应用</h2>
+<ul>
+  <li><strong>光模块</strong>：100G/400G 光模块 POMA 供电（空间受限场景）</li>
+  <li><strong>汽车电子</strong>：车载摄像头、座舱娱乐系统</li>
+  <li><strong>IoT 设备</strong>：高密度 MCU/DSP 供电</li>
+  <li><strong>工业控制</strong>：PLC、伺服驱动控制供电</li>
+</ul>
+
+<h2>联系获取样品</h2>
+<p>GM65041 现已量产，样品申请请联系上海芯聚电子：<a href="tel:021-62271972" class="text-blue-600 underline">021-62271972</a></p>
+`
+  },
+  665: {
+    title:'低噪、毛刺、声场塌陷全消失！GM1501专为 DAC 打造供电利器',
+    date:'2026-08-07', tag:'技术文章', tagColor:'bg-green-100 text-green-700',
+    content:`
+<h2>DAC 供电：为什么噪声如此关键？</h2>
+<p>音频 DAC（数模转换器）对电源噪声极度敏感。当供电存在噪声或纹波时，DAC 输出信号中会叠加电源噪声，导致：</p>
+<ul>
+  <li>🎵 底噪升高（音乐背景出现"沙沙"声）</li>
+  <li>⚡ 毛刺（Glitch）：DAC 输出在码间转换时出现尖峰</li>
+  <li>📉 声场塌陷：立体声分离度下降，声音变得平板</li>
+</ul>
+
+<h2>GM1501：为 DAC 供电而生</h2>
+<p><strong>GM1501</strong> 是共模半导体专为 DAC 供电场景设计的低噪声 LDO，具备以下核心参数：</p>
+<table>
+  <tr><th>参数</th><th>GM1501</th><th>普通 LDO</th></tr>
+  <tr><td>噪声密度</td><td>0.8μV<sub>rms</sub></td><td>5–20μV<sub>rms</sub></td></tr>
+  <tr><td>PSRR @ 1kHz</td><td>80dB</td><td>40–60dB</td></tr>
+  <tr><td>PSRR @ 100kHz</td><td>70dB</td><td>20–30dB</td></tr>
+  <tr><td>输出电流</td><td>200mA</td><td>—</td></tr>
+  <tr><td>输入电压</td><td>2.7V – 5.5V</td><td>—</td></tr>
+  <tr><td>封装</td><td>DFN-10 / MSOP-10</td><td>—</td></tr>
+</table>
+
+<h2>实测对比</h2>
+<p>在某款热销音频 DAC（ESS ES9038MQ2）上实测：使用普通 LDO 供电时，底噪为 -115dBFS；更换为 GM1501 后，底噪降低至 -120dBFS，提升了 5dB 的信噪比表现。</p>
+
+<h2>推荐搭配</h2>
+<ul>
+  <li>DAC 模拟供电：GM1501（AVDD）</li>
+  <li>数字供电：GM1200（DVDD）</li>
+  <li>时钟供电：GM1501（晶体振荡器）</li>
+</ul>
+`
+  },
+  664: {
+    title:'【新品发布】GM7200：22μA超低功耗精密基准源，REF30性能升级替代',
+    date:'2026-07-22', tag:'新品发布', tagColor:'bg-green-100 text-green-700',
+    content:`
+<h2>产品简介</h2>
+<p><strong>GM7200</strong> 是共模半导体推出的超低功耗精密电压基准芯片，静态电流仅 <strong>22μA</strong>，是 TI REF30 系列的完美升级替代方案。GM7200 在保持相同封装和引脚的同时，实现了更低的功耗和更宽的输入电压范围。</p>
+<div class="highlight-box">
+<strong>核心优势：</strong>22μA 超低静态电流 | 3.5V–40V 宽电压输入 | PIN to PIN 兼容 REF30 | SOP-8 封装 | 已量产
+</div>
+
+<h2>关键参数对比</h2>
+<table>
+  <tr><th>参数</th><th>GM7200</th><th>REF30（TI）</th></tr>
+  <tr><td>温漂</td><td>15–30ppm/℃</td><td>15–30ppm/℃</td></tr>
+  <tr><td>静态电流</td><td>22μA（typ）</td><td>35μA（typ）</td></tr>
+  <tr><td>输入电压</td><td>3.5V – 40V</td><td>2.7V – 18V</td></tr>
+  <tr><td>输出电压</td><td>2.048 / 2.5 / 3.0 / 4.096 / 5.0V</td><td>固定</td></tr>
+  <tr><td>噪声</td><td>10μVp-p (0.1–10Hz)</td><td>15μVp-p</td></tr>
+  <tr><td>封装</td><td>SOP-8</td><td>SOP-8</td></tr>
+  <tr><td>状态</td><td>量产</td><td>交货紧张</td></tr>
+</table>
+
+<h2>典型应用</h2>
+<ul>
+  <li>便携式医疗设备（电池供电，低功耗关键）</li>
+  <li>工业传感器与变送器</li>
+  <li>数据采集系统（ADC 参考电压）</li>
+  <li>电池供电仪器仪表</li>
+</ul>
+
+<h2>联系获取样品</h2>
+<p>GM7200 现已量产，可通过上海芯聚电子申请免费样品：<a href="tel:021-62271972" class="text-blue-600 underline">021-62271972</a></p>
+`
+  }
+};
+
+const params = new URLSearchParams(location.search);
+const id = parseInt(params.get('id')) || 671;
+const article = articles[id] || articles[671];
+
+document.getElementById('article').innerHTML = `
+<div class="flex items-center gap-3 mb-6">
+  <a href="news.html" class="text-gray-400 hover:text-gray-600 transition">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+  </a>
+  <span class="text-sm text-gray-400">/</span>
+  <a href="news.html" class="text-sm text-gray-500 hover:text-blue-600 transition">新闻中心</a>
+</div>
+<div class="mb-6">
+  <span class="inline-block ${article.tagColor} text-xs font-semibold px-2.5 py-1 rounded-full mb-4">${article.tag}</span>
+  <h1 class="text-2xl sm:text-3xl font-black text-gray-900 leading-tight mb-4">${article.title}</h1>
+  <div class="flex items-center gap-4 text-sm text-gray-400">
+    <span>共模半导体</span>
+    <span>·</span>
+    <span>${article.date}</span>
+  </div>
+</div>
+<hr class="border-gray-100 mb-8">
+<div class="article-body">
+  ${article.content}
+</div>
+<div class="mt-10 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
+  <a href="contact.html" class="flex-1 text-center py-3 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-all">咨询产品 →</a>
+  <a href="prodcenter.html" class="flex-1 text-center py-3 border-2 border-blue-700 text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-all">查看产品 →</a>
+</div>
+`;
+</script>
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">产品中心</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="prodcenter.html?cat=1" class="hover:text-white transition-colors">高PSRR低噪声LDO</a></li>
+          <li><a href="prodcenter.html?cat=2" class="hover:text-white transition-colors">高效率小体积Buck</a></li>
+          <li><a href="prodcenter.html?cat=3" class="hover:text-white transition-colors">基准源</a></li>
+          <li><a href="prodcenter.html?cat=4" class="hover:text-white transition-colors">放大器</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">快捷链接</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">首页</a></li>
+          <li><a href="applications.html" class="hover:text-white transition-colors">应用领域</a></li>
+          <li><a href="news.html" class="hover:text-white transition-colors">新闻中心</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">联系我们</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="tel:021-62271972" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              021-62271972
+            </a>
+          </li>
+          <li>
+            <a href="mailto:sales@simacity.com.cn" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              sales@simacity.com.cn
+            </a>
+          </li>
+          <li class="flex items-start gap-1.5 text-xs">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            上海市长宁区延安西路2299号
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">关注我们</h4>
+        <div class="text-sm">
+          <p class="mb-3 text-gray-400">扫码添加企业微信</p>
+          <img src="images/wechat-qr-new.jpg" alt="企业微信" class="w-32 h-32 rounded-xl border border-gray-700" onerror="this.src='images/wechat-qr.jpg'">
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-sm">© 2026 上海芯聚电子科技有限公司 版权所有</p>
+      <p class="text-xs text-gray-600">技术支持：共模半导体（苏州）有限公司</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,221 @@
+/* 共享样式 - 芯聚 × 共模 联合官网 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-blue: #1E40AF;
+  --brand-blue-light: #2563EB;
+  --brand-green: #059669;
+  --gray-900: #111827;
+}
+
+/* 导航栏 */
+.navbar {
+  @apply sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100;
+}
+.nav-inner {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+.nav-logo {
+  @apply flex items-center gap-3 py-3;
+}
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+}
+.nav-links {
+  @apply hidden md:flex items-center gap-1;
+}
+.nav-link {
+  @apply px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-blue-700 hover:bg-blue-50 transition-all duration-200;
+}
+.nav-link.active {
+  @apply text-blue-700 bg-blue-50 font-semibold;
+}
+.nav-phone {
+  @apply flex items-center gap-1.5 text-sm font-semibold text-blue-700;
+}
+.mobile-menu-btn {
+  @apply md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1E3A8A 0%, #1E40AF 40%, #2563EB 100%);
+  min-height: 600px;
+}
+.hero-particles {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* 统计数字 */
+.stat-card {
+  @apply bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-5 text-center border border-white/20;
+}
+.stat-number {
+  @apply text-3xl sm:text-4xl font-bold text-white;
+}
+.stat-label {
+  @apply text-sm text-blue-100 mt-1;
+}
+
+/* 产品卡片 */
+.product-card {
+  @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300;
+}
+.product-card-img {
+  @apply w-full h-40 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center;
+}
+.product-card-body {
+  @apply p-5;
+}
+.product-tag {
+  @apply inline-block px-2.5 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-700 mb-2;
+}
+
+/* 参数表 */
+.param-table {
+  @apply w-full text-sm;
+}
+.param-table thead th {
+  @apply px-3 py-2.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 border-b border-gray-200;
+}
+.param-table tbody td {
+  @apply px-3 py-2.5 text-gray-700 border-b border-gray-100;
+}
+.param-table tbody tr:hover {
+  @apply bg-blue-50/40;
+}
+.param-table tbody tr:last-child td {
+  @apply border-b-0;
+}
+
+/* 新闻卡片 */
+.news-card {
+  @apply bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300;
+}
+.news-card-img {
+  @apply w-full h-44 bg-gradient-to-br from-gray-100 to-gray-200;
+}
+.news-card-body {
+  @apply p-5;
+}
+.news-tag {
+  @apply inline-block px-2.5 py-0.5 text-xs font-semibold rounded-full mb-2;
+}
+.news-tag.new {
+  @apply bg-green-100 text-green-700;
+}
+.news-tag.event {
+  @apply bg-purple-100 text-purple-700;
+}
+.news-tag.industry {
+  @apply bg-blue-100 text-blue-700;
+}
+
+/* Tab 切换 */
+.tab-btn {
+  @apply px-5 py-2.5 text-sm font-medium rounded-full transition-all duration-200;
+}
+.tab-btn.active {
+  @apply bg-blue-700 text-white shadow-sm;
+}
+.tab-btn.inactive {
+  @apply text-gray-500 hover:text-blue-700 hover:bg-blue-50;
+}
+
+/* 表单 */
+.form-input {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all;
+}
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-1.5;
+}
+.form-btn-primary {
+  @apply w-full py-3.5 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 active:scale-[0.98] transition-all duration-200 shadow-sm;
+}
+
+/* Footer */
+.footer {
+  @apply bg-gray-900 text-gray-400;
+}
+.footer-link {
+  @apply text-gray-400 hover:text-white transition-colors;
+}
+.footer-heading {
+  @apply text-white font-semibold mb-4;
+}
+
+/* 通用容器 */
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+.section-title {
+  @apply text-2xl sm:text-3xl font-bold text-gray-900;
+}
+.section-subtitle {
+  @apply text-gray-500 mt-2;
+}
+
+/* 工具类 */
+.text-brand { color: var(--brand-blue); }
+.bg-brand { background-color: var(--brand-blue); }
+.btn-brand {
+  @apply inline-flex items-center gap-2 px-6 py-3 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 transition-all shadow-sm hover:shadow;
+}
+.btn-outline-brand {
+  @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-blue-700 text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-all;
+}
+
+/* 白底导航链接 */
+.nav-link-white {
+  position: relative;
+  color: #64748b;
+  font-size: 14px;
+  padding: 8px 0;
+  transition: color 0.2s;
+}
+.nav-link-white::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 2px;
+  background: #1d4ed8;
+  transition: all 0.3s;
+  border-radius: 1px;
+}
+.nav-link-white:hover { color: #1d4ed8; }
+.nav-link-white:hover::after { left: 0; right: 0; }
+.nav-link-white.active { color: #1d4ed8; font-weight: 600; }
+.nav-link-white.active::after { left: 0; right: 0; }
+
+/* 高级搜索框 */
+.search-hero-box { max-width: 620px; margin-left: auto; margin-right: auto; }
+.search-hero-inner {
+  display: flex; align-items: center;
+  background: rgba(255,255,255,0.97);
+  border-radius: 16px; padding: 6px 6px 6px 16px; gap: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.15);
+}
+.search-icon-wrap { display: flex; align-items: center; flex-shrink: 0; }
+.search-hero-input {
+  flex: 1; background: transparent; outline: none;
+  color: #1e293b; font-size: 15px; padding: 8px 0;
+}
+.search-hero-input::placeholder { color: #94a3b8; }
+.search-hero-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: white; border: none; padding: 10px 20px;
+  border-radius: 10px; font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.4);
+}
+.search-hero-btn:hover {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+  box-shadow: 0 4px 16px rgba(37,99,235,0.5);
+  transform: translateY(-1px);
+}
+.search-hint { display: flex; align-items: center; justify-content: center; margin-top: 12px; }

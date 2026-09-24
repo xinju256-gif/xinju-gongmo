@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系我们 | 芯聚电子 × 共模半导体</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{brand:{700:'#1d4ed8',800:'#1e40af'}}}}}</script>
+  <style>
+    .nav-link { @apply px-5 py-2 text-sm font-medium text-white/80 hover:text-white transition-all duration-200 rounded-lg hover:bg-white/10; }
+    .nav-link.active { @apply text-white bg-white/15 font-semibold; }
+    .card-flat { @apply bg-white rounded-2xl border border-blue-100 shadow-sm overflow-hidden hover:shadow-md transition-all duration-300; }
+    .section-tag { @apply inline-block px-4 py-1.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full mb-3 tracking-wider uppercase; }
+    .form-input:focus { outline:none; box-shadow:0 0 0 3px rgba(37,99,235,0.2); border-color:#2563eb; }
+  
+    .nav-link-white{position:relative;color:#64748b;font-size:14px;padding:8px 0;transition:color .2s}.nav-link-white::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#1d4ed8;transition:all .3s;border-radius:1px}.nav-link-white:hover{color:#1d4ed8}.nav-link-white:hover::after{left:0;right:0}.nav-link-white.active{color:#1d4ed8;font-weight:600}.nav-link-white.active::after{left:0;right:0}
+  </style>
+</head>
+<body class="bg-white font-sans antialiased">
+
+<!-- 导航栏 - 白色背景，宽松留白 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12 flex items-center justify-between py-3">
+    <a href="index.html" class="flex items-center gap-3 py-1 shrink-0">
+      <img src="images/logo-simacity-new.png" alt="SIMACITY 芯聚电子" class="h-10 w-auto object-contain" style="max-width:140px;">
+      <div class="w-px h-10 bg-gray-300"></div>
+      <img src="images/logo-gongmo.png" alt="共模半导体 GONGMO" class="h-10 w-auto object-contain">
+    </a>
+    <nav class="hidden lg:flex items-center gap-9">
+      <a href="index.html" class="nav-link-white">首页</a>
+      <a href="prodcenter.html" class="nav-link-white">产品中心</a>
+      <a href="applications.html" class="nav-link-white">应用领域</a>
+      <a href="news.html" class="nav-link-white">新闻中心</a>
+      <a href="about.html" class="nav-link-white">关于我们</a>
+      <a href="contact.html" class="nav-link-white">联系我们</a>
+    </nav>
+    <a href="tel:021-62271972" class="hidden xl:flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      021-62271972
+    </a>
+    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1">
+    <a href="index.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">首页</a>
+    <a href="prodcenter.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">产品中心</a>
+    <a href="applications.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">应用领域</a>
+    <a href="news.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">新闻中心</a>
+    <a href="about.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">关于我们</a>
+    <a href="contact.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">联系我们</a>
+    <a href="tel:021-62271972" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-blue-700 mt-2">电话：021-62271972</a>
+  </div>
+</header>
+<script>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>.addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+
+<!-- 页面标题 -->
+<div style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);" class="py-14">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="section-tag" style="background:rgba(255,255,255,0.15);color:#93c5fd;">联系我们</div>
+    <h1 class="text-3xl sm:text-4xl font-black text-white mb-2">Contact Us</h1>
+    <p class="text-blue-200">上海芯聚电子恭候您的垂询，样品申请、技术支持、报价咨询，随时联系</p>
+  </div>
+</div>
+
+<!-- 主要内容 -->
+<div class="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-10">
+
+    <!-- 左侧：联系信息 -->
+    <div class="lg:col-span-2">
+      <h2 class="text-xl font-bold text-gray-900 mb-6">联系方式</h2>
+      <div class="space-y-5 mb-8">
+        <!-- 电话 -->
+        <div class="flex gap-4 items-start">
+          <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-gray-400 mb-0.5">电话</div>
+            <a href="tel:021-62271972" class="text-blue-700 text-lg font-bold hover:underline block">021-62271972</a>
+          </div>
+        </div>
+        <!-- 邮箱 -->
+        <div class="flex gap-4 items-start">
+          <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-gray-400 mb-0.5">邮箱</div>
+            <a href="mailto:sales@simacity.com.cn" class="text-blue-700 font-bold hover:underline block">sales@simacity.com.cn</a>
+          </div>
+        </div>
+        <!-- 地址 -->
+        <div class="flex gap-4 items-start">
+          <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-gray-400 mb-0.5">地址</div>
+            <p class="text-gray-700 font-medium text-sm leading-relaxed">上海市长宁区延安西路2299号</p>
+          </div>
+        </div>
+        <!-- 营业时间 -->
+        <div class="flex gap-4 items-start">
+          <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="text-xs text-gray-400 mb-0.5">服务时间</div>
+            <p class="text-gray-700 text-sm">周一至周五 9:00 - 18:00</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 企业微信二维码 -->
+      <div class="card-flat p-5">
+        <h3 class="font-semibold text-gray-900 mb-3 text-sm">扫码添加企业微信</h3>
+        <div class="flex gap-4 items-center">
+          <img src="images/wechat-qr-new.jpg" alt="企业微信" class="w-28 h-28 rounded-xl border border-gray-100" onerror="this.src='images/wechat-qr.jpg'">
+          <div class="text-xs text-gray-500 leading-relaxed">
+            <p class="mb-1.5">长按识别二维码</p>
+            <p class="mb-1.5">添加好友后请备注公司/姓名</p>
+            <p>工作时间 1小时内回复</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 右侧：询价表单 -->
+    <div class="lg:col-span-3">
+      <div class="card-flat p-6 lg:p-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-1">询价 / 样品申请</h2>
+        <p class="text-sm text-gray-500 mb-6">填写以下信息，我们将在 1 个工作日内与您联系</p>
+
+        <form id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1.5">姓名 <span class="text-red-500">*</span></label>
+              <input type="text" name="name" required placeholder="请输入您的姓名" class="form-input">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1.5">公司名称</label>
+              <input type="text" name="company" placeholder="请输入公司名称" class="form-input">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1.5">电话 <span class="text-red-500">*</span></label>
+              <input type="tel" name="phone" required placeholder="请输入联系电话" class="form-input">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-600 mb-1.5">邮箱</label>
+              <input type="email" name="email" placeholder="请输入邮箱" class="form-input">
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5">咨询类型</label>
+            <select name="type" class="form-input">
+              <option value="quote">产品报价</option>
+              <option value="sample">样品申请</option>
+              <option value="tech">技术支持</option>
+              <option value="agent">代理合作</option>
+              <option value="other">其他</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5">所需型号</label>
+            <input type="text" name="model" placeholder="如：GM1200、GM2400、GM7400" class="form-input">
+          </div>
+          <div class="mb-5">
+            <label class="block text-xs font-semibold text-gray-600 mb-1.5">留言</label>
+            <textarea name="message" rows="4" placeholder="请描述您的需求..." class="form-input resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3.5 bg-blue-700 text-white font-semibold rounded-xl hover:bg-blue-800 active:scale-[0.98] transition-all text-sm shadow-sm">
+            提交咨询
+          </button>
+        </form>
+
+        <!-- 成功提示 -->
+        <div id="successMsg" class="hidden text-center py-10">
+          <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-1">提交成功！</h3>
+          <p class="text-sm text-gray-500">感谢您的咨询，我们将在 1 个工作日内与您联系</p>
+          <p class="text-xs text-gray-400 mt-2">如有紧急需求，请直接致电：<a href="tel:021-62271972" class="text-blue-600 font-bold hover:underline">021-62271972</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('contactForm').classList.add('hidden');
+    document.getElementById('successMsg').classList.remove('hidden');
+  }
+</script>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">产品中心</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="prodcenter.html?cat=1" class="hover:text-white transition-colors">高PSRR低噪声LDO</a></li>
+          <li><a href="prodcenter.html?cat=2" class="hover:text-white transition-colors">高效率小体积Buck</a></li>
+          <li><a href="prodcenter.html?cat=3" class="hover:text-white transition-colors">基准源</a></li>
+          <li><a href="prodcenter.html?cat=4" class="hover:text-white transition-colors">放大器</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">快捷链接</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">首页</a></li>
+          <li><a href="applications.html" class="hover:text-white transition-colors">应用领域</a></li>
+          <li><a href="news.html" class="hover:text-white transition-colors">新闻中心</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">联系我们</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="tel:021-62271972" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              021-62271972
+            </a>
+          </li>
+          <li>
+            <a href="mailto:sales@simacity.com.cn" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              sales@simacity.com.cn
+            </a>
+          </li>
+          <li class="flex items-start gap-1.5 text-xs">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            上海市长宁区延安西路2299号
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">关注我们</h4>
+        <div class="text-sm">
+          <p class="mb-3 text-gray-400">扫码添加企业微信</p>
+          <img src="images/wechat-qr-new.jpg" alt="企业微信" class="w-32 h-32 rounded-xl border border-gray-700" onerror="this.src='images/wechat-qr.jpg'">
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-sm">© 2026 上海芯聚电子科技有限公司 版权所有</p>
+      <p class="text-xs text-gray-600">技术支持：共模半导体（苏州）有限公司</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

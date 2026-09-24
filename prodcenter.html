@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>产品中心 | 芯聚电子 × 共模半导体</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { 700:'#1d4ed8',800:'#1e40af' } } } }
+  </script>
+  <style>
+    .nav-underline { position:relative; }
+    .nav-underline::after { content:''; position:absolute; bottom:-2px; left:50%; right:50%; height:2px; background:#1d4ed8; transition:all 0.3s; border-radius:1px; }
+    .nav-underline:hover::after, .nav-underline.active::after { left:16px; right:16px; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+    .table-scroll { overflow-x: auto; }
+    .table-scroll table { min-width: 700px; }
+    .spec-link { color:#2563eb; text-decoration:underline; text-underline-offset:2px; }
+    tr.highlight { background:#eff6ff !important; }
+  
+    .nav-link-white{position:relative;color:#64748b;font-size:14px;padding:8px 0;transition:color .2s}.nav-link-white::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:2px;background:#1d4ed8;transition:all .3s;border-radius:1px}.nav-link-white:hover{color:#1d4ed8}.nav-link-white:hover::after{left:0;right:0}.nav-link-white.active{color:#1d4ed8;font-weight:600}.nav-link-white.active::after{left:0;right:0}
+  </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+
+<!-- 导航栏 - 白色背景，宽松留白 -->
+<header class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-8 lg:px-12 flex items-center justify-between py-3">
+    <a href="index.html" class="flex items-center gap-3 py-1 shrink-0">
+      <img src="images/logo-simacity-new.png" alt="SIMACITY 芯聚电子" class="h-10 w-auto object-contain" style="max-width:140px;">
+      <div class="w-px h-10 bg-gray-300"></div>
+      <img src="images/logo-gongmo.png" alt="共模半导体 GONGMO" class="h-10 w-auto object-contain">
+    </a>
+    <nav class="hidden lg:flex items-center gap-9">
+      <a href="index.html" class="nav-link-white">首页</a>
+      <a href="prodcenter.html" class="nav-link-white">产品中心</a>
+      <a href="applications.html" class="nav-link-white">应用领域</a>
+      <a href="news.html" class="nav-link-white">新闻中心</a>
+      <a href="about.html" class="nav-link-white">关于我们</a>
+      <a href="contact.html" class="nav-link-white">联系我们</a>
+    </nav>
+    <a href="tel:021-62271972" class="hidden xl:flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900 transition-colors">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+      021-62271972
+    </a>
+    <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 px-6 py-4 space-y-1">
+    <a href="index.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">首页</a>
+    <a href="prodcenter.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">产品中心</a>
+    <a href="applications.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">应用领域</a>
+    <a href="news.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">新闻中心</a>
+    <a href="about.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">关于我们</a>
+    <a href="contact.html" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50">联系我们</a>
+    <a href="tel:021-62271972" class="block px-4 py-2.5 rounded-lg text-sm font-medium text-blue-700 mt-2">电话：021-62271972</a>
+  </div>
+</header>
+<script>
+  document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>.addEventListener('click', function() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+</script>
+
+<!-- 页面标题 -->
+<div class="bg-gradient-to-r from-blue-800 to-blue-700 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl sm:text-4xl font-black text-white mb-2">产品中心</h1>
+    <p class="text-blue-200">共模半导体全系产品 · 国产高性能模拟芯片 · PIN TO PIN 替代 TI / ADI / MPS</p>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+  <!-- 搜索框 -->
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-8">
+    <div class="flex gap-3 flex-col sm:flex-row">
+      <div class="flex-1 relative">
+        <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="searchInput" placeholder="输入型号搜索，如 GM1200、GM2406…" class="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm" onkeyup="filterProducts()">
+      </div>
+      <select id="filterVin" onchange="filterProducts()" class="px-4 py-3 rounded-xl border border-gray-200 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">全部输入电压</option>
+        <option value="5">≤5V</option>
+        <option value="20">≤20V</option>
+        <option value="42">≤42V</option>
+      </select>
+      <select id="filterPkg" onchange="filterProducts()" class="px-4 py-3 rounded-xl border border-gray-200 text-gray-700 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="">全部封装</option>
+        <option value="DFN">DFN</option>
+        <option value="QFN">QFN</option>
+        <option value="LQFN">LQFN</option>
+        <option value="SOP">SOP</option>
+        <option value="MSOP">MSOP</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tab 导航 -->
+  <div class="flex flex-wrap gap-2 mb-6" id="tabs">
+    <button onclick="switchTab('ldo')" class="tab-btn active" data-tab="ldo">高PSRR低噪声 LDO <span class="ml-1 text-xs opacity-70">(35)</span></button>
+    <button onclick="switchTab('buck')" class="tab-btn inactive" data-tab="buck">高效率小体积 Buck <span class="ml-1 text-xs opacity-70">(20)</span></button>
+    <button onclick="switchTab('ref')" class="tab-btn inactive" data-tab="ref">基准源 <span class="ml-1 text-xs opacity-70">(3)</span></button>
+    <button onclick="switchTab('amp')" class="tab-btn inactive" data-tab="amp">放大器 <span class="ml-1 text-xs opacity-70">(2)</span></button>
+  </div>
+
+  <!-- ========== LDO ========== -->
+  <div id="tab-ldo" class="tab-content active">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="table-scroll">
+        <table class="param-table w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50 sticky left-0 z-10 border-r border-gray-200">型号</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输入电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输出电流</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输出电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">PSRR (100kHz)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">噪声 (μV<sub>rms</sub>)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">封装</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Datasheet</th>
+            </tr>
+          </thead>
+          <tbody id="ldo-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== BUCK ========== -->
+  <div id="tab-buck" class="tab-content">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="table-scroll">
+        <table class="param-table w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50 sticky left-0 z-10 border-r border-gray-200">型号</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输入电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输出电流</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输出电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">开关频率 (MHz)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">封装</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Datasheet</th>
+            </tr>
+          </thead>
+          <tbody id="buck-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== REFSRC ========== -->
+  <div id="tab-ref" class="tab-content">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="table-scroll">
+        <table class="param-table w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50 sticky left-0 z-10 border-r border-gray-200">型号</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输入电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">输出电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">温漂 (ppm/℃)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">噪声</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">封装</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Datasheet</th>
+            </tr>
+          </thead>
+          <tbody id="ref-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mt-6 bg-amber-50 border border-amber-200 rounded-xl p-5">
+      <h3 class="font-bold text-amber-800 mb-2">💡 基准源选型提示</h3>
+      <p class="text-sm text-amber-700 leading-relaxed">共模基准源全系列支持宽电压输入（3.5V–40V），温漂低至 1.3ppm/℃，噪声低至 2μVp-p。完美替代 TI REF50xx、ADI AD58xx 系列。适用于 ADC 参考电压、工业仪表、精密测量设备。</p>
+    </div>
+  </div>
+
+  <!-- ========== AMP ========== -->
+  <div id="tab-amp" class="tab-content">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div class="table-scroll">
+        <table class="param-table w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50 sticky left-0 z-10 border-r border-gray-200">型号</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">通道数</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">带宽 (MHz)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">电压噪声 (nV/√Hz)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">失调电压 (μV)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">供电电压 (V)</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">封装</th>
+              <th class="px-3 py-3 text-center text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50">Datasheet</th>
+            </tr>
+          </thead>
+          <tbody id="amp-body">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- 选型咨询 -->
+  <div class="mt-10 bg-blue-700 rounded-2xl p-8 text-center">
+    <h3 class="text-2xl font-bold text-white mb-3">需要选型支持或报价？</h3>
+    <p class="text-blue-100 mb-6">我们的FAE团队提供一对一技术支持，帮您选型、替代方案对比、申请免费样品。</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:021-62271972" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-blue-700 font-bold rounded-xl hover:bg-blue-50 transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        电话咨询
+      </a>
+      <a href="mailto:sales@simacity.com.cn" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        发送邮件
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">产品中心</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="prodcenter.html?cat=1" class="hover:text-white transition-colors">高PSRR低噪声LDO</a></li>
+          <li><a href="prodcenter.html?cat=2" class="hover:text-white transition-colors">高效率小体积Buck</a></li>
+          <li><a href="prodcenter.html?cat=3" class="hover:text-white transition-colors">基准源</a></li>
+          <li><a href="prodcenter.html?cat=4" class="hover:text-white transition-colors">放大器</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">快捷链接</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">首页</a></li>
+          <li><a href="applications.html" class="hover:text-white transition-colors">应用领域</a></li>
+          <li><a href="news.html" class="hover:text-white transition-colors">新闻中心</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">联系我们</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="tel:021-62271972" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              021-62271972
+            </a>
+          </li>
+          <li>
+            <a href="mailto:sales@simacity.com.cn" class="hover:text-white transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              sales@simacity.com.cn
+            </a>
+          </li>
+          <li class="flex items-start gap-1.5 text-xs">
+            <svg class="w-3.5 h-3.5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            上海市长宁区延安西路2299号
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold mb-4 text-sm">关注我们</h4>
+        <div class="text-sm">
+          <p class="mb-3 text-gray-400">扫码添加企业微信</p>
+          <img src="images/wechat-qr-new.jpg" alt="企业微信" class="w-32 h-32 rounded-xl border border-gray-700" onerror="this.src=\'images/wechat-qr.jpg\'">
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-7 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-sm">© 2026 上海芯聚电子科技有限公司 版权所有</p>
+      <p class="text-xs text-gray-600">技术支持：共模半导体（苏州）有限公司</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ========== 产品数据 ==========
+const ldoProducts = [
+  {name:"GM1200",imin:2.6,imax:20.0,iout:"200mA",vout:"1.5–15",psrr:70,noise:"0.8",pkg:"DFN-10, MSOP-10",spec:"/upload/prod/2616/GM1200.pdf",buy:""},
+  {name:"GM1202",imin:2.6,imax:20.0,iout:"200mA",vout:"1.5–15",psrr:80,noise:"1.0",pkg:"DFN-10",spec:"/upload/prod/2695/GM1202.pdf",buy:""},
+  {name:"GM1203",imin:1.1,imax:6.5,iout:"3A",vout:"0.5–5.5",psrr:42,noise:"3.0",pkg:"QFN-20",spec:"/upload/prod/2617/GM1203.pdf",buy:"",child:true},
+  {name:"GM12031",imin:1.5,imax:6.5,iout:"2A",vout:"0.5–5.5",psrr:42,noise:"35",pkg:"HSOP-8",spec:"/upload/prod/2662/GM12031.pdf",buy:""},
+  {name:"GM12032",imin:1.5,imax:6.5,iout:"1.5A",vout:"0.5–5.5",psrr:42,noise:"35",pkg:"HSOP-8",spec:"/upload/prod/2663/GM12032.pdf",buy:""},
+  {name:"GM12033",imin:1.5,imax:6.5,iout:"3A",vout:"0.5–5.5",psrr:42,noise:"30",pkg:"TO263-5",spec:"/upload/prod/2676/GM12033.pdf",buy:""},
+  {name:"GM1204",imin:1.9,imax:28.0,iout:"3A",vout:"0.9–24",psrr:null,noise:"3.0",pkg:"TO263-5, HTSSOP-16",spec:"/upload/prod/2629/GM1204.pdf",buy:""},
+  {name:"GM1205",imin:2.2,imax:5.5,iout:"500mA",vout:"0.6–Vin",psrr:75,noise:"12",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2631/GM1205.pdf",buy:""},
+  {name:"GM1206",imin:2.0,imax:5.5,iout:"600mA",vout:"0.6–Vin",psrr:75,noise:"30",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2628/GM1206.pdf",buy:""},
+  {name:"GM1207",imin:1.8,imax:5.5,iout:"1.5A",vout:"0.6–Vin",psrr:70,noise:"null",pkg:"DFN-8",spec:"/upload/prod/2627/GM1207.pdf",buy:""},
+  {name:"GM1208",imin:2.5,imax:5.5,iout:"500mA",vout:"1.2–5.0",psrr:72,noise:"null",pkg:"SOT-23-5",spec:"/upload/prod/2641/GM1208.pdf",buy:""},
+  {name:"GM1209",imin:1.8,imax:5.5,iout:"1A",vout:"0.6–Vin",psrr:70,noise:"30",pkg:"DFN-8, MSOP-8",spec:"/upload/prod/2642/GM1209.pdf",buy:""},
+  {name:"GM1210",imin:2.0,imax:5.5,iout:"1A",vout:"0.6–Vin",psrr:68,noise:"null",pkg:"SOT-23-5",spec:"/upload/prod/2645/GM1210.pdf",buy:""},
+  {name:"GM1211",imin:2.5,imax:5.5,iout:"500mA",vout:"1.2–5.0",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2655/GM1211.pdf",buy:""},
+  {name:"GM1501",imin:2.7,imax:5.5,iout:"200mA",vout:"1.8–3.8",psrr:80,noise:"0.8",pkg:"DFN-10",spec:"/upload/prod/2660/GM1501.pdf",buy:""},
+  {name:"GM1502",imin:2.7,imax:5.5,iout:"200mA",vout:"1.8–3.8",psrr:75,noise:"1.0",pkg:"DFN-10",spec:"/upload/prod/2661/GM1502.pdf",buy:""},
+  {name:"GM1800",imin:1.9,imax:28.0,iout:"3A",vout:"0.8–24",psrr:null,noise:"null",pkg:"TO263-5, HTSSOP-16",spec:"/upload/prod/2632/GM1800.pdf",buy:""},
+  {name:"GM1801",imin:1.9,imax:28.0,iout:"3A",vout:"0.8–24",psrr:null,noise:"null",pkg:"TO263-5, HTSSOP-16",spec:"/upload/prod/2665/GM1801.pdf",buy:""},
+  {name:"GM1900",imin:1.8,imax:5.5,iout:"500mA",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2668/GM1900.pdf",buy:""},
+  {name:"GM1901",imin:1.8,imax:5.5,iout:"1A",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"DFN-8",spec:"/upload/prod/2669/GM1901.pdf",buy:""},
+  {name:"GM1902",imin:2.5,imax:5.5,iout:"500mA",vout:"1.2–5.0",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2670/GM1902.pdf",buy:""},
+  {name:"GM1903",imin:1.8,imax:5.5,iout:"1.5A",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"DFN-8, MSOP-8",spec:"/upload/prod/2671/GM1903.pdf",buy:""},
+  {name:"GM1904",imin:2.2,imax:5.5,iout:"500mA",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2672/GM1904.pdf",buy:""},
+  {name:"GM1905",imin:2.0,imax:5.5,iout:"600mA",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2673/GM1905.pdf",buy:""},
+  {name:"GM1906",imin:1.8,imax:5.5,iout:"1A",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2674/GM1906.pdf",buy:""},
+  {name:"GM1907",imin:1.8,imax:5.5,iout:"500mA",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"SOT-23-5, DFN-6",spec:"/upload/prod/2675/GM1907.pdf",buy:""},
+  {name:"GM6401",imin:2.4,imax:18.0,iout:"1A",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"SOT-23-6, DFN-8",spec:"/upload/prod/2677/GM6401.pdf",buy:""},
+  {name:"GM6403A",imin:3.4,imax:45.0,iout:"3A",vout:"1–38",psrr:null,noise:"null",pkg:"LQFN-20",spec:"/upload/prod/2643/GM6403.pdf",buy:""},
+  {name:"GM6405",imin:3.4,imax:45.0,iout:"5A",vout:"1–38",psrr:null,noise:"null",pkg:"LQFN-20",spec:"/upload/prod/2644/GM6405.pdf",buy:""},
+  {name:"GM6406",imin:3.0,imax:40.0,iout:"3A",vout:"1–36",psrr:null,noise:"null",pkg:"QFN-16",spec:"/upload/prod/2684/GM6406.pdf",buy:""},
+  {name:"GM6410",imin:3.4,imax:45.0,iout:"3A",vout:"1–38",psrr:null,noise:"null",pkg:"LQFN-20",spec:"/upload/prod/2685/GM6410.pdf",buy:""},
+  {name:"GM6411",imin:3.4,imax:45.0,iout:"3A",vout:"1–38",psrr:null,noise:"null",pkg:"LQFN-20",spec:"/upload/prod/2686/GM6411.pdf",buy:""},
+  {name:"GM6503",imin:2.7,imax:5.5,iout:"3A",vout:"0.6–Vin",psrr:null,noise:"null",pkg:"QFN-16",spec:"/upload/prod/2687/GM6503.pdf",buy:""},
+  {name:"GM65041",imin:3.4,imax:45.0,iout:"4A",vout:"1–36",psrr:null,noise:"null",pkg:"LQFN-12 (2×2mm)",spec:"/upload/prod/2688/GM65041.pdf",buy:""},
+];
+
+const buckProducts = [
+  {name:"GM2400",imin:3.4,imax:42.0,iout:"6A",vout:"0.97–40",freq:"0.2–3.0",pkg:"LQFN-26, LQFN-15",spec:"/upload/prod/2680/GM2400_24001_24002.pdf",child:true},
+  {name:"GM24001",imin:3.4,imax:42.0,iout:"4A",vout:"1.0–40",freq:"0.2–3.0",pkg:"LQFN-26",spec:"/upload/prod/2680/GM2400_24001_24002.pdf"},
+  {name:"GM24002",imin:3.4,imax:42.0,iout:"3.5A",vout:"0.8–40",freq:"0.2–3.0",pkg:"LQFN-15",spec:"/upload/prod/2680/GM2400_24001_24002.pdf"},
+  {name:"GM2406",imin:3.4,imax:42.0,iout:"6A",vout:"0.97–40",freq:"0.2–3.0",pkg:"LQFN-14",spec:"/upload/prod/2681/GM2406_24061.pdf",child:true},
+  {name:"GM24061",imin:3.4,imax:42.0,iout:"4A",vout:"0.97–40",freq:"0.2–3.0",pkg:"LQFN-14",spec:"/upload/prod/2681/GM2406_24061.pdf"},
+  {name:"GM2410",imin:3.4,imax:42.0,iout:"10A",vout:"≤VIN",freq:"0.36–2.6",pkg:"QFN-17",spec:"/upload/prod/2719/GM2410_PrA.pdf"},
+  {name:"GM2500",imin:2.5,imax:5.5,iout:"6A",vout:"0.5–5.5",freq:"1.0–9.0",pkg:"LQFN-12, LQFN-13, LQFN-7",spec:"/upload/prod/2648/GM2500_25001_25002_25003.pdf",child:true},
+  {name:"GM25001",imin:2.5,imax:5.5,iout:"6A",vout:"0.5–5.5",freq:"1.0–3.0",pkg:"LQFN-12",spec:"/upload/prod/2648/GM2500_25001_25002_25003.pdf"},
+  {name:"GM25002",imin:2.5,imax:5.5,iout:"6A",vout:"0.5–5.5",freq:"3.0–9.0",pkg:"LQFN-12",spec:"/upload/prod/2648/GM2500_25001_25002_25003.pdf"},
+  {name:"GM25003",imin:2.5,imax:5.5,iout:"3A",vout:"0.5–5.5",freq:"2.4",pkg:"LQFN-7",spec:"/upload/prod/2648/GM2500_25001_25002_25003.pdf"},
+  {name:"GM2501",imin:2.3,imax:5.5,iout:"1A",vout:"1.2–5.0",freq:"1.0–10.0",pkg:"WLCSP-6, SOT-563",spec:"/upload/prod/2649/GM2501.pdf"},
+  {name:"GM2502",imin:2.5,imax:5.5,iout:"3A",vout:"0.5–5.0",freq:"1.0–3.0",pkg:"LQFN-12, SOT-583",spec:"/upload/prod/2651/GM2502.pdf"},
+  {name:"GM2503",imin:2.5,imax:5.5,iout:"2A",vout:"0.5–5.0",freq:"1.0–3.0",pkg:"LQFN-12, SOT-583",spec:"/upload/prod/2653/GM2503.pdf"},
+  {name:"GM2504",imin:2.5,imax:5.5,iout:"2A",vout:"0.5–5.0",freq:"1.0–3.0",pkg:"LQFN-8",spec:"/upload/prod/2654/GM2504.pdf"},
+  {name:"GM2505",imin:2.5,imax:5.5,iout:"3A",vout:"0.5–5.0",freq:"1.0–3.0",pkg:"LQFN-12, SOT-583",spec:"/upload/prod/2656/GM2505.pdf"},
+  {name:"GM2506",imin:2.5,imax:5.5,iout:"3A",vout:"0.5–5.0",freq:"1.0–3.0",pkg:"LQFN-12",spec:"/upload/prod/2657/GM2506.pdf"},
+  {name:"GM2507",imin:2.5,imax:5.5,iout:"6A",vout:"0.5–5.5",freq:"1.0–9.0",pkg:"LQFN-12, LQFN-7",spec:"/upload/prod/2658/GM2507.pdf"},
+  {name:"GM3400",imin:3.5,imax:18.0,iout:"3A",vout:"0.6–Vin",freq:"0.5–3.0",pkg:"QFN-16",spec:"/upload/prod/2659/GM3400.pdf"},
+  {name:"GM3401",imin:3.5,imax:18.0,iout:"3A",vout:"0.6–Vin",freq:"0.5–3.0",pkg:"QFN-16",spec:"/upload/prod/2664/GM3401.pdf"},
+  {name:"GM3402",imin:3.5,imax:18.0,iout:"3A",vout:"0.6–Vin",freq:"0.5–3.0",pkg:"QFN-16",spec:"/upload/prod/2666/GM3402.pdf"},
+  {name:"GM3403",imin:3.5,imax:18.0,iout:"3A",vout:"0.6–Vin",freq:"0.5–3.0",pkg:"QFN-16",spec:"/upload/prod/2667/GM3403.pdf"},
+  {name:"GM4400",imin:3.5,imax:18.0,iout:"3A",vout:"0.6–Vin",freq:"0.5–3.0",pkg:"QFN-16",spec:"/upload/prod/2679/GM4400.pdf"},
+  {name:"GM4401",imin:3.5,imax:18.0,iout:"3A",vout:"0.6–Vin",freq:"0.5–3.0",pkg:"QFN-16",spec:"/upload/prod/2682/GM4401.pdf"},
+  {name:"GM5300",imin:2.5,imax:5.5,iout:"3A",vout:"0.6–Vin",freq:"1.0–3.0",pkg:"QFN-16",spec:"/upload/prod/2692/GM5300.pdf"},
+  {name:"GM5301",imin:2.5,imax:5.5,iout:"3A",vout:"0.6–Vin",freq:"1.0–3.0",pkg:"QFN-16",spec:"/upload/prod/2693/GM5301.pdf"},
+  {name:"GM5302",imin:2.5,imax:5.5,iout:"3A",vout:"0.6–Vin",freq:"1.0–3.0",pkg:"QFN-16",spec:"/upload/prod/2694/GM5302.pdf"},
+  {name:"GM5303",imin:2.5,imax:5.5,iout:"3A",vout:"0.6–Vin",freq:"1.0–3.0",pkg:"QFN-16",spec:"/upload/prod/2696/GM5303.pdf"},
+  {name:"GM5400",imin:2.7,imax:5.5,iout:"3A",vout:"0.6–Vin",freq:"1.0–3.0",pkg:"QFN-16",spec:"/upload/prod/2697/GM5400.pdf"},
+];
+
+const refProducts = [
+  {name:"GM7400",vmin:3.5,vmax:40.0,vout:"2.5 / 3 / 5 / 10",noise:"10μVp-p",drift:"10",pkg:"SO-8",spec:"/upload/prod/2652/GM7400.pdf",buy:""},
+  {name:"GM7401",vmin:3.5,vmax:40.0,vout:"1.25 / 2.048 / 3.3 / 4.096",noise:"2ppm",drift:"3",pkg:"SOP-8, MSOP-8",spec:"/upload/prod/2678/GM7401.pdf",buy:""},
+  {name:"GM7402",vmin:9.0,vmax:40.0,vout:"2.048 / 2.5 / 3 / 3.3 / 4.096 / 5",noise:"1.3ppm",drift:"1.3",pkg:"SOP-8",spec:"/upload/prod/2705/GM7402.pdf",buy:""},
+];
+
+const ampProducts = [
+  {name:"GM4500",ch:"1",bw:"28",noise:"2.7",vos:"19",vrange:"2.7–5.5",pkg:"MSOP-8, SOP-8",spec:"/upload/prod/2650/GM4500_45002.pdf",buy:""},
+  {name:"GM4501",ch:"2",bw:"10",noise:"2.7",vos:"19",vrange:"2.7–5.5",pkg:"MSOP-8",spec:"/upload/prod/2683/GM4501_GM45012.pdf",buy:""},
+];
+
+// ========== 渲染函数 ==========
+function renderLdo() {
+  const tbody = document.getElementById('ldo-body');
+  tbody.innerHTML = ldoProducts.map(p => {
+    const highlight = window._searchQ && p.name.toLowerCase().includes(window._searchQ.toLowerCase());
+    const isNew = p.name === 'GM6403A';
+    return `<tr class="${highlight?'highlight':''}" data-name="${p.name}" data-imax="${p.imax}">
+      <td class="px-4 py-3 font-bold text-blue-700 sticky left-0 bg-white z-10 border-r border-gray-200">
+        ${p.name}${p.child?' <span class="text-xs text-gray-400">(子型号)</span>':''}${isNew?' <span class="ml-1 text-xs bg-blue-700 text-white px-1.5 py-0.5 rounded">NEW</span>':''}
+      </td>
+      <td class="px-3 py-3 text-center text-sm">${p.imin}–${p.imax}</td>
+      <td class="px-3 py-3 text-center text-sm font-medium">${p.iout}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.vout}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.psrr?p.psrr+' dB':'—'}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.noise=='null'||!p.noise?'—':p.noise}</td>
+      <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
+      <td class="px-3 py-3 text-center">
+        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderBuck() {
+  const tbody = document.getElementById('buck-body');
+  tbody.innerHTML = buckProducts.map(p => {
+    const highlight = window._searchQ && p.name.toLowerCase().includes(window._searchQ.toLowerCase());
+    const isNew = p.name === 'GM6403A';
+    return `<tr class="${highlight?'highlight':''}" data-name="${p.name}" data-imax="${p.imax}">
+      <td class="px-4 py-3 font-bold text-emerald-700 sticky left-0 bg-white z-10 border-r border-gray-200">
+        ${p.name}${p.child?' <span class="text-xs text-gray-400">(子型号)</span>':''}${isNew?' <span class="ml-1 text-xs bg-emerald-600 text-white px-1.5 py-0.5 rounded">NEW</span>':''}
+      </td>
+      <td class="px-3 py-3 text-center text-sm">${p.imin}–${p.imax}</td>
+      <td class="px-3 py-3 text-center text-sm font-medium">${p.iout}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.vout}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.freq || '—'}</td>
+      <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
+      <td class="px-3 py-3 text-center">
+        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderRef() {
+  const tbody = document.getElementById('ref-body');
+  tbody.innerHTML = refProducts.map(p => {
+    const highlight = window._searchQ && p.name.toLowerCase().includes(window._searchQ.toLowerCase());
+    return `<tr class="${highlight?'highlight':''}" data-name="${p.name}">
+      <td class="px-4 py-3 font-bold text-amber-700 sticky left-0 bg-white z-10 border-r border-gray-200">${p.name}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.vmin}–${p.vmax}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.vout}</td>
+      <td class="px-3 py-3 text-center text-sm font-medium">${p.drift}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.noise}</td>
+      <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
+      <td class="px-3 py-3 text-center">
+        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function renderAmp() {
+  const tbody = document.getElementById('amp-body');
+  tbody.innerHTML = ampProducts.map(p => {
+    const highlight = window._searchQ && p.name.toLowerCase().includes(window._searchQ.toLowerCase());
+    return `<tr class="${highlight?'highlight':''}" data-name="${p.name}">
+      <td class="px-4 py-3 font-bold text-purple-700 sticky left-0 bg-white z-10 border-r border-gray-200">${p.name}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.ch}</td>
+      <td class="px-3 py-3 text-center text-sm font-medium">${p.bw}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.noise}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.vos}</td>
+      <td class="px-3 py-3 text-center text-sm">${p.vrange}</td>
+      <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
+      <td class="px-3 py-3 text-center">
+        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => { el.classList.remove('active'); el.classList.add('inactive'); });
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.querySelector(`[data-tab="${tab}"]`).classList.remove('inactive');
+  document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+  window._currentTab = tab;
+  filterProducts();
+}
+
+function filterProducts() {
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const maxVin = parseFloat(document.getElementById('filterVin').value) || Infinity;
+  const pkg = document.getElementById('filterPkg').value.toLowerCase();
+  window._searchQ = q;
+
+  // 重新高亮+过滤
+  const tab = window._currentTab || 'ldo';
+  let products;
+  if (tab === 'ldo') products = ldoProducts;
+  else if (tab === 'buck') products = buckProducts;
+  else if (tab === 'ref') products = refProducts;
+  else products = ampProducts;
+
+  products.forEach(p => {
+    const row = document.querySelector(`[data-name="${p.name}"]`);
+    if (!row) return;
+    let visible = true;
+    if (q && !p.name.toLowerCase().includes(q)) visible = false;
+    if (p.imax && p.imax > maxVin) visible = false;
+    if (pkg && !p.pkg.toLowerCase().includes(pkg)) visible = false;
+    row.style.display = visible ? '' : 'none';
+    if (q && p.name.toLowerCase().includes(q)) row.classList.add('highlight');
+    else row.classList.remove('highlight');
+  });
+}
+
+// 初始化
+renderLdo(); renderBuck(); renderRef(); renderAmp();
+
+// URL 参数搜索
+const params = new URLSearchParams(location.search);
+const sq = params.get('search');
+if (sq) {
+  document.getElementById('searchInput').value = sq;
+  filterProducts();
+  // 如果有锚点则跳转
+  const anchor = location.hash.replace('#','');
+  if (anchor) switchTab(anchor);
+}
+
+// 锚点
+if (location.hash) {
+  const tab = location.hash.replace('#','');
+  setTimeout(() => switchTab(tab), 100);
+}
+</script>
+</body>
+</html>
