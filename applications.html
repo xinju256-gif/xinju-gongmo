@@ -60,9 +60,6 @@
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
-</script>.addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-  });
 </script>
 
 <!-- 页面标题 -->
@@ -83,8 +80,8 @@
     </div>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
       <a href="#infrared" class="app-card group text-center">
-        <div class="h-24 bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center">
-          <img src="images/app-img/infrared-thermal.jpg" alt="红外成像" class="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300" onerror="this.style.opacity='0'">
+        <div class="h-24 bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center overflow-hidden">
+          <img src="images/app-img/infrared-thermal.jpg" alt="红外成像" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" onerror="this.style.opacity='0'">
         </div>
         <div class="p-3">
           <h3 class="font-semibold text-gray-900 text-sm">红外成像</h3>
@@ -161,9 +158,11 @@
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
     </div>
-    <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-8 text-center">
-      <img src="images/app-img/20231213171014-COhTDeNe.jpg" alt="红外成像方案" class="w-full max-w-sm mx-auto rounded-2xl shadow-lg mb-6" onerror="this.style.display='none'">
-      <div class="grid grid-cols-3 gap-3">
+    <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-3xl p-6 sm:p-8">
+      <div class="rounded-2xl overflow-hidden shadow-lg mb-6 bg-slate-900">
+        <img src="images/app-img/infrared-thermal.jpg" alt="红外热成像方案" class="w-full aspect-[12/5] object-cover">
+      </div>
+      <div class="grid grid-cols-3 gap-3 text-center">
         <div class="bg-white rounded-xl p-4 shadow-sm">
           <div class="text-lg font-black text-red-700">0.8μV</div>
           <div class="text-xs text-gray-500 mt-1">LDO 噪声</div>
