@@ -1,0 +1,6 @@
+[
+  {"id":1,"name":"高PSRR低噪声LDO","table_name":"t_prod_ldo","intro":"低噪声、高电源抑制比，适用于敏感模拟前端供电"},
+  {"id":2,"name":"高效率小体积Buck","table_name":"t_prod_buck","intro":"高效率降压转换器，小封装、高功率密度"},
+  {"id":3,"name":"基准源","table_name":"t_prod_refsrc","intro":"高精度电压基准，低温漂、低噪声"},
+  {"id":4,"name":"放大器","table_name":"t_prod_amplifier","intro":"低失调、低噪声运算放大器，适合精密信号处理"}
+]
