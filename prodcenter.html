@@ -15,6 +15,73 @@
     .nav-underline:hover::after, .nav-underline.active::after { left:16px; right:16px; }
     .tab-content { display:none; }
     .tab-content.active { display:block; }
+
+    /* 搜索模式 tab */
+    .search-mode-btn {
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      color: #4b5563;
+    }
+    .search-mode-btn.active {
+      background: #1e40af;
+      color: #fff;
+      border-color: #1e40af;
+    }
+    .search-mode-btn.inactive:hover {
+      background: #f3f4f6;
+    }
+
+    /* 竞品表格样式 */
+    .comp-table { width: 100%; font-size: 14px; }
+    .comp-table th {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6b7280;
+      background: #f9fafb;
+      text-align: left;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .comp-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .comp-table tr:last-child td { border-bottom: 0; }
+    .comp-table tr:hover td { background: #f9fafb; }
+
+    .comp-loading {
+      padding: 40px 0;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 14px;
+    }
+    .comp-empty {
+      padding: 40px 16px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+      background: #f9fafb;
+      border-radius: 12px;
+    }
+    .comp-replace-chip {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #dbeafe;
+      color: #1e40af;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 4px;
+      margin-top: 4px;
+    }
     .table-scroll { overflow-x: auto; }
     .table-scroll table { min-width: 700px; }
     .spec-link { color:#2563eb; text-decoration:underline; text-underline-offset:2px; }
@@ -65,9 +132,6 @@
   document.getElementById('mobile-menu-btn').addEventListener('click', function() {
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
-</script>.addEventListener('click', function() {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-  });
 </script>
 
 <!-- 页面标题 -->
@@ -80,8 +144,20 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-  <!-- 搜索框 -->
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-8">
+  <!-- 搜索模式 tab -->
+  <div class="flex flex-wrap gap-2 mb-3" id="searchModeTabs">
+    <button onclick="switchSearchMode('model')" class="search-mode-btn active" data-mode="model">
+      <svg class="w-4 h-4 inline-block -mt-0.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      共模型号搜索
+    </button>
+    <button onclick="switchSearchMode('comp')" class="search-mode-btn inactive" data-mode="comp">
+      <svg class="w-4 h-4 inline-block -mt-0.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+      竞品替代查询
+    </button>
+  </div>
+
+  <!-- 共模型号搜索 -->
+  <div id="searchPanel-model" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-8">
     <div class="flex gap-3 flex-col sm:flex-row">
       <div class="flex-1 relative">
         <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -104,13 +180,28 @@
     </div>
   </div>
 
-  <!-- Tab 导航 -->
-  <div class="flex flex-wrap gap-2 mb-6" id="tabs">
-    <button onclick="switchTab('ldo')" class="tab-btn active" data-tab="ldo">高PSRR低噪声 LDO <span class="ml-1 text-xs opacity-70">(35)</span></button>
-    <button onclick="switchTab('buck')" class="tab-btn inactive" data-tab="buck">高效率小体积 Buck <span class="ml-1 text-xs opacity-70">(20)</span></button>
-    <button onclick="switchTab('ref')" class="tab-btn inactive" data-tab="ref">基准源 <span class="ml-1 text-xs opacity-70">(3)</span></button>
-    <button onclick="switchTab('amp')" class="tab-btn inactive" data-tab="amp">放大器 <span class="ml-1 text-xs opacity-70">(2)</span></button>
+  <!-- 竞品替代查询 -->
+  <div id="searchPanel-comp" class="bg-white rounded-2xl shadow-sm border border-blue-100 p-6 mb-8" style="display:none">
+    <div class="mb-4">
+      <h3 class="text-base font-bold text-gray-900 mb-1">竞品替代查询</h3>
+      <p class="text-xs text-gray-500">输入 TI、ADI、MPS 等友商型号（支持空格、英文逗号、换行分隔多个型号），查询共模 Pin-to-Pin 替代方案</p>
+    </div>
+    <div class="flex gap-3 flex-col sm:flex-row">
+      <textarea id="compInput" rows="2" placeholder="例如：TPS54302, TPS7A4700, MAX8881" class="flex-1 px-4 py-3 rounded-xl border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono resize-none"></textarea>
+      <button onclick="searchComp()" class="px-6 py-3 bg-blue-700 hover:bg-blue-800 text-white rounded-xl font-medium whitespace-nowrap transition-colors">查询</button>
+    </div>
+    <div id="compResult" class="mt-4"></div>
   </div>
+
+  <!-- 产品 tab 导航与表格（仅在 共模型号 模式下显示）-->
+  <div id="prodBrowser">
+    <!-- Tab 导航 -->
+    <div class="flex flex-wrap gap-2 mb-6" id="tabs">
+      <button onclick="switchTab('ldo')" class="tab-btn active" data-tab="ldo">高PSRR低噪声 LDO <span class="ml-1 text-xs opacity-70">(35)</span></button>
+      <button onclick="switchTab('buck')" class="tab-btn inactive" data-tab="buck">高效率小体积 Buck <span class="ml-1 text-xs opacity-70">(20)</span></button>
+      <button onclick="switchTab('ref')" class="tab-btn inactive" data-tab="ref">基准源 <span class="ml-1 text-xs opacity-70">(3)</span></button>
+      <button onclick="switchTab('amp')" class="tab-btn inactive" data-tab="amp">放大器 <span class="ml-1 text-xs opacity-70">(2)</span></button>
+    </div>
 
   <!-- ========== LDO ========== -->
   <div id="tab-ldo" class="tab-content active">
@@ -209,6 +300,7 @@
       </div>
     </div>
   </div>
+  </div> <!-- /prodBrowser -->
 
   <!-- 选型咨询 -->
   <div class="mt-10 bg-blue-700 rounded-2xl p-8 text-center">
@@ -447,6 +539,103 @@ function renderAmp() {
   }).join('');
 }
 
+// 搜索模式（共模型号 / 竞品查询）
+function switchSearchMode(mode) {
+  window._searchMode = mode;
+  // tab 按钮
+  document.querySelectorAll('#searchModeTabs .search-mode-btn').forEach(b => {
+    if (b.dataset.mode === mode) {
+      b.classList.add('active'); b.classList.remove('inactive');
+    } else {
+      b.classList.remove('active'); b.classList.add('inactive');
+    }
+  });
+  // 面板
+  document.getElementById('searchPanel-model').style.display = (mode === 'model') ? '' : 'none';
+  document.getElementById('searchPanel-comp').style.display = (mode === 'comp') ? '' : 'none';
+  // 产品 tab 与表格（仅 model 模式显示）
+  document.getElementById('prodBrowser').style.display = (mode === 'model') ? '' : 'none';
+  // 清空竞品结果
+  if (mode !== 'comp') document.getElementById('compResult').innerHTML = '';
+}
+
+// 竞品查询
+async function searchComp() {
+  const inputEl = document.getElementById('compInput');
+  const resultEl = document.getElementById('compResult');
+  const raw = (inputEl.value || '').trim();
+  if (!raw) { alert('请输入要查询的型号'); return; }
+  const names = raw.split(/[\s,，;；\n\r|]+/).filter(s => s.length > 0).map(s => s.toUpperCase());
+  if (names.length === 0) { alert('请输入有效的型号'); return; }
+  if (names.length > 50) { alert('一次最多查询 50 个型号'); return; }
+
+  resultEl.innerHTML = '<div class="comp-loading"><span>正在查询 ' + names.length + ' 个型号…</span></div>';
+
+  try {
+    const resp = await fetch('https://www.gongmosemi.com/gmweb/prodcenter/searchCompByNames?type=0', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ names })
+    });
+    const data = await resp.json();
+    const results = (data && data.resultData) ? data.resultData : [];
+
+    if (!results || results.length === 0) {
+      resultEl.innerHTML =
+        '<div class="comp-empty">未找到对应替代型号。<br>请检查型号拼写，或直接联系我们 <a href="tel:021-62271972" class="text-blue-700 underline">021-62271972</a> 选型。</div>';
+      return;
+    }
+
+    // 渲染结果表
+    let html = '<div class="text-xs text-gray-500 mb-2">输入 ' + names.length + ' 个型号，找到 ' + results.length + ' 条替代记录</div>';
+    html += '<div class="overflow-x-auto"><table class="comp-table">';
+    html += '<thead><tr>';
+    html += '<th>友商型号</th>';
+    html += '<th>共模替代型号</th>';
+    html += '<th>产品线</th>';
+    html += '<th>封装</th>';
+    html += '<th>操作</th>';
+    html += '</tr></thead><tbody>';
+
+    for (const r of results) {
+      const sold = r.sell_type_name || '';
+      const replace = r.type_name || '';
+      const prodLine = r.prod_line || '';
+      const pkg = r.package_type || '';
+      const equiv = r.equ_type_names || '';
+
+      // 多个 equ 型号拆成 chip
+      let equivHtml = '';
+      if (equiv) {
+        equiv.split(',').forEach(s => {
+          const t = s.trim();
+          if (t) equivHtml += '<span class="comp-replace-chip">' + t + '</span>';
+        });
+      }
+
+      html += '<tr>';
+      html += '<td class="font-mono font-bold text-gray-900">' + escapeHtml(sold) + '</td>';
+      html += '<td><div class="font-bold text-blue-700 mb-1">' + escapeHtml(replace) + '</div>';
+      if (equivHtml) html += '<div class="flex flex-wrap">' + equivHtml + '</div>';
+      html += '</td>';
+      html += '<td class="text-gray-700">' + escapeHtml(prodLine) + '</td>';
+      html += '<td class="text-gray-700">' + escapeHtml(pkg) + '</td>';
+      html += '<td><a href="contact.html" class="text-xs px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors">询价</a></td>';
+      html += '</tr>';
+    }
+    html += '</tbody></table></div>';
+    resultEl.innerHTML = html;
+  } catch (e) {
+    resultEl.innerHTML = '<div class="comp-empty text-red-500">查询失败：' + escapeHtml(e.message || String(e)) + '</div>';
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
 function switchTab(tab) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(el => { el.classList.remove('active'); el.classList.add('inactive'); });
@@ -487,13 +676,18 @@ function filterProducts() {
 // 初始化
 renderLdo(); renderBuck(); renderRef(); renderAmp();
 
-// URL 参数搜索
+// URL 参数搜索 + 模式初始化
 const params = new URLSearchParams(location.search);
 const sq = params.get('search');
+const mode = params.get('mode');
+if (mode === 'comp') {
+  switchSearchMode('comp');
+} else {
+  switchSearchMode('model');
+}
 if (sq) {
   document.getElementById('searchInput').value = sq;
   filterProducts();
-  // 如果有锚点则跳转
   const anchor = location.hash.replace('#','');
   if (anchor) switchTab(anchor);
 }
