@@ -156,6 +156,21 @@
     </button>
   </div>
 
+  <!-- 替代产品完整对照表 PDF 下载 -->
+  <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 rounded-2xl px-5 py-4 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+    <div class="flex items-start gap-3">
+      <svg class="w-6 h-6 text-blue-700 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h8a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      <div>
+        <p class="text-sm font-bold text-gray-900">共模替代产品完整销售型号对照表</p>
+        <p class="text-xs text-gray-500 mt-0.5">含 Bom-to-Bom &amp; Pin-to-Pin 兼容替代、封装、包装方式等全量信息（794 项）</p>
+      </div>
+    </div>
+    <a href="downloads/gongmo-cross-ref.pdf" download class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-700 hover:bg-blue-800 text-white rounded-xl font-medium text-sm whitespace-nowrap transition-colors shrink-0">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+      下载 PDF
+    </a>
+  </div>
+
   <!-- 共模型号搜索 -->
   <div id="searchPanel-model" class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-8">
     <div class="flex gap-3 flex-col sm:flex-row">
@@ -458,6 +473,16 @@ const ampProducts = [
   {name:"GM4501",ch:"2",bw:"10",noise:"2.7",vos:"19",vrange:"2.7–5.5",pkg:"MSOP-8",spec:"/upload/prod/2683/GM4501_GM45012.pdf",buy:""},
 ];
 
+// 源站 404 的规格书：改显示「规格书请联系我们」并跳联系页
+const brokenPdf = ["GM1207.pdf", "GM1206.pdf", "GM1205.pdf", "GM1800.pdf", "GM1208.pdf", "GM1209.pdf", "GM6403.pdf", "GM6405.pdf", "GM1210.pdf", "GM2501.pdf", "GM2502.pdf", "GM2503.pdf", "GM2504.pdf", "GM1211.pdf", "GM2505.pdf", "GM2506.pdf", "GM2507.pdf", "GM3400.pdf", "GM1501.pdf", "GM1502.pdf", "GM3401.pdf", "GM1801.pdf", "GM3402.pdf", "GM3403.pdf", "GM1900.pdf", "GM1901.pdf", "GM1902.pdf", "GM1903.pdf", "GM1904.pdf", "GM1905.pdf", "GM1906.pdf", "GM1907.pdf", "GM6401.pdf", "GM4400.pdf", "GM4401.pdf", "GM6406.pdf", "GM6410.pdf", "GM6411.pdf", "GM6503.pdf", "GM65041.pdf", "GM5300.pdf", "GM5301.pdf", "GM5302.pdf", "GM5303.pdf", "GM5400.pdf"];
+function specCell(p) {
+  const fn = (p.spec || "").split('/').pop();
+  if (brokenPdf.includes(fn)) {
+    return '<a href="contact.html" class="spec-link text-xs">规格书请联系我们</a>';
+  }
+  return '<a href="https://www.gongmosemi.com' + p.spec + '" target="_blank" class="spec-link text-xs">下载规格书</a>';
+}
+
 // ========== 渲染函数 ==========
 function renderLdo() {
   const tbody = document.getElementById('ldo-body');
@@ -475,7 +500,7 @@ function renderLdo() {
       <td class="px-3 py-3 text-center text-sm">${p.noise=='null'||!p.noise?'—':p.noise}</td>
       <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
       <td class="px-3 py-3 text-center">
-        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+        ${specCell(p)}
       </td>
     </tr>`;
   }).join('');
@@ -496,7 +521,7 @@ function renderBuck() {
       <td class="px-3 py-3 text-center text-sm">${p.freq || '—'}</td>
       <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
       <td class="px-3 py-3 text-center">
-        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+        ${specCell(p)}
       </td>
     </tr>`;
   }).join('');
@@ -514,7 +539,7 @@ function renderRef() {
       <td class="px-3 py-3 text-center text-sm">${p.noise}</td>
       <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
       <td class="px-3 py-3 text-center">
-        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+        ${specCell(p)}
       </td>
     </tr>`;
   }).join('');
@@ -533,7 +558,7 @@ function renderAmp() {
       <td class="px-3 py-3 text-center text-sm">${p.vrange}</td>
       <td class="px-3 py-3 text-center text-sm text-gray-600">${p.pkg}</td>
       <td class="px-3 py-3 text-center">
-        <a href="https://www.gongmosemi.com${p.spec}" target="_blank" class="spec-link text-xs">下载规格书</a>
+        ${specCell(p)}
       </td>
     </tr>`;
   }).join('');
